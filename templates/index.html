@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Who Unfollowed Me</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      color: #333;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #a855f7, #6366f1);
+      color: white;
+      padding: 60px 20px 80px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 600px;
+      background: white;
+      margin: -40px auto 30px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .container h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      margin-top: 30px;
+      width: 100%;
+      background-color: #8b5cf6;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #7c3aed;
+    }
+
+    .instructions {
+      background-color: #f3f0ff;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      margin-top: 30px;
+      line-height: 1.6;
+    }
+
+    .info-cards {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto 40px;
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    .info-card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      flex: 1 1 28%;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .info-card h3 {
+      color: #4f46e5;
+      margin-bottom: 10px;
+    }
+
+    .download {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .download a {
+      text-decoration: none;
+      background-color: #10b981;
+      color: white;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 20px;
+      color: #666;
+    }
+
+    footer a {
+      color: #4f46e5;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Who Unfollowed Me</h1>
+    <p>Find out who isn't following you back on Instagram — no login required, totally free.</p>
+  </div>
+
+  <div class="container">
+    <h2>Upload Your Instagram Files</h2>
+    <form method="POST" enctype="multipart/form-data">
+      <label>Upload <strong>following.json</strong></label>
+      <input type="file" name="following" required>
+      <label>Upload <strong>followers_1.json</strong></label>
+      <input type="file" name="followers" required>
+      <button type="submit">Analyze</button>
+    </form>
+
+    {% if result_file %}
+    <div class="download">
+      <p>✅ Analysis complete!</p>
+      <a href="{{ result_file }}" download>Download CSV</a>
+    </div>
+    {% endif %}
+
+    <div class="instructions">
+      <strong>How to Use:</strong>
+      <p>1. Go to your Instagram account settings.</p>
+      <p>2. Request a download of your data (JSON format).</p>
+      <p>3. Upload your <strong>followers</strong> and <strong>following</strong> JSON files here.</p>
+      <p>4. We’ll show you who isn’t following you back — all locally in your browser.</p>
+    </div>
+  </div>
+
+  <div class="info-cards">
+    <div class="info-card">
+      <h3>No Login Required</h3>
+      <p>We never ask for your Instagram password. Just upload your data.</p>
+    </div>
+    <div class="info-card">
+      <h3>Private & Secure</h3>
+      <p>All analysis is done in your browser. Nothing is stored or shared.</p>
+    </div>
+    <div class="info-card">
+      <h3>Free Forever</h3>
+      <p>This tool will always be free — no paywalls, no upsells.</p>
+    </div>
+  </div>
+
+  <footer>
+    Built with ❤️ by Kanishk · <a href="/privacy">Privacy Policy</a>
+  </footer>
+</body>
+</html>
