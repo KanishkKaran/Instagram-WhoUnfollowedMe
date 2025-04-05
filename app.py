@@ -31,6 +31,10 @@ def index():
         not_following_back = sorted(following_usernames - followers_usernames)
 
         timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+
+        # ✅ Ensure the 'static' folder exists before writing the file
+        os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+
         result_file_path = os.path.join(app.config['UPLOAD_FOLDER'], f"unfollowers_{timestamp}.csv")
         with open(result_file_path, mode='w', newline='') as file:
             writer = csv.writer(file)
